@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Praxisteam
+{% endblock %}
+
+{% block heading %}
+Praxisteam
+{% endblock %}
+
+{% block content %}
+![Dr. med. Tilman Markert]({{ url_for('static', filename='images/markert_klein.jpg') }}){:.rahmen style="margin:0 18px 18px 0;float:left;"}
+
+Dr. med. Tilman Markert {: style="margin-top:-5px;"}
+=======================
+
+Nach Forschungstätigkeit am Max-Planck-Institut für Experimentelle Kardiologie Bad Nauheim und klinischer Weiterbildung an der Universitätsklinik Würzburg Leitender Oberarzt des Herzzentrums Coswig/Anhalt seit dessen Eröffnung 1998.
+
+2003 Übernahme der kardiologischen Praxis in Gaggenau. Seit 2004 Herzkatheter zu Diagnostik und Therapie am Kreiskrankenhaus Rastatt.
+
+Unsere Helferinnen
+==================
+
+{% from "_macros.html" import render_assistant %}
+{{ render_assistant('Agnes Kresztel', 'Agnes-klein.jpg') }}
+
+{{ render_assistant('Daniela Windhorst', 'Daniela-klein.jpg') }}
+
+<p></p>
+{{ render_assistant('Claudia Wichmann', 'Claudia-klein.jpg') }}
+
+{{ render_assistant('Regina Schmidt', 'Regina-klein.jpg') }}
+
+{% endblock %}
