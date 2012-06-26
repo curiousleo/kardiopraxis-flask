@@ -1,11 +1,11 @@
 {% macro render_main_menu() -%}
 
 <ul>
-{% for title, filename in config['MENU'] -%}
+{% for title, path in config['MENU'] -%}
 <li>
     <a
-        {% if url_for('page', filename=filename) == request.path %}class="current"{% endif -%}
-        href="{{ url_for('page', filename=filename) }}">{{ title }}</a>
+        {% if url_for('page', path=path) == request.path %}class="current"{% endif -%}
+        href="{{ url_for('page', path=path) }}">{{ title }}</a>
 </li>
 {%- endfor %}
 </ul>
