@@ -27,8 +27,11 @@
         </div>
         <section>
             <h1>
-                {% if page.heading %} {{ page.heading }}
-                {% else %} {{ page.title }} {% endif %}
+                {% if page.heading %}
+                    {{ page.heading|trim|replace('\n', '<br>')|safe }}
+                {% else %}
+                    {{ page.title }}
+                {% endif %}
             </h1>
 
             <article>{{ page.html|safe }}</article>
