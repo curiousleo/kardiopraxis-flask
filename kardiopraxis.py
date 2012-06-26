@@ -1,44 +1,55 @@
-from flask import Flask, request, session, g, redirect, url_for, \
-                  abort, render_template, flash
+from flask import Flask, redirect, url_for, render_template, \
+                  render_template_string
+
+from flask.ext.flatpages import FlatPages
 
 from markdown import markdown
-from typogrify import typogrify
 
 # configuration
 DEBUG = True
 MENU = (
-    ('Startseite', 'index.html'),
-    ('Praxisteam', 'praxisteam.html'),
-    ('Sprechstunden', 'sprechstunden.html'),
-    ('Leistungen', 'leistungen.html'),
-    ('Anfahrt', 'anfahrt.html'),
-    ('Kooperationen', 'kooperationen.html'),
-    ('Pflichtangaben', 'pflichtangaben.html'),
+    ('Startseite', 'index'),
+    ('Praxisteam', 'praxisteam'),
+    ('Sprechstunden', 'sprechstunden'),
+    ('Leistungen', 'leistungen'),
+    ('Anfahrt', 'anfahrt'),
+    ('Kooperationen', 'kooperationen'),
+    ('Pflichtangaben', 'pflichtangaben'),
 )
-START_PAGE = 'index.html'
+DEFAULT_TEMPLATE = 'layout.html'
 MARKDOWN_EXTENSIONS = ['tables', 'extra']
-FREEZER_BASE_URL = 'file:///home/leo/Code/kardiopraxis-flask/build'
+FLATPAGES_HTML_RENDERER = 'kardiopraxis.render_html'
 
 # create app
 app = Flask(__name__)
 app.config.from_object(__name__)
+pages = FlatPages(app)
 
 # define views
-@app.route('/')
-def start_page():
-    '''Redirect to START_PAGE.'''
-    return redirect(url_for('page', filename=START_PAGE))
-
-@app.route('/<filename>')
-def page(filename):
+@app.route('/', defaults={'path': 'index'})
+@app.route('/<path:path>.html') # legacy URL
+@app.route('/<path:path>/')
+def page(path):
     '''Render Markdown-formatted page.'''
-    return render_template(filename)
+    page = pages.get_or_404(path)
+    template = page.meta.get('template', app.config['DEFAULT_TEMPLATE'])
+    return render_template(template, page=page)
 
-# custom jinja2 filters
-@app.template_filter('markdown_extra')
-def markdown_filter(s):
-    return typogrify(markdown(s,
-                     extensions=app.config['MARKDOWN_EXTENSIONS']))
+# page rendering function
+def render_html(text):
+    '''Render Markdown to HTML in three steps:
+
+    1. Render as Jinja2 template string (executing macros) => Markdown
+    2. Render as Markdown => HTML
+    3. Typogrify => Nicer HTML (if typogrify is available)
+    '''
+    md = render_template_string(text)
+    html = markdown(md, extensions=app.config['MARKDOWN_EXTENSIONS'])
+    try:
+        from typogrify import typogrify
+        return typogrify(html)
+    except ImportError:
+        return html
 
 # run app
 if __name__ == '__main__':
