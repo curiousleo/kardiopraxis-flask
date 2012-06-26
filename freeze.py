@@ -12,7 +12,7 @@ def page():
 @freezer.register_generator
 def legacy_page():
     for __, name in app.config['MENU']:
-        yield '/{}.html'.format(name)
+        yield '/{}.htm'.format(name)
 
 # run freezer
 if __name__ == '__main__':

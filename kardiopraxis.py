@@ -27,8 +27,7 @@ pages = FlatPages(app)
 
 # define views
 @app.route('/', defaults={'path': 'index'})
-@app.route('/<path:path>.html') # legacy URL
-@app.route('/<path:path>/')
+@app.route('/<path:path>.htm') # use legacy URLs
 def page(path):
     '''Render Markdown-formatted page.'''
     page = pages.get_or_404(path)
