@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>{{ page.title }} - Kardiopraxis Gaggenau</title>
+        <meta name="keywords" content="Kardiologiepraxis, Kardiopraxis, Praxis, Kardiologie, Gaggenau, Kardiopraxis-Gaggenau, Dr. Tilman Markert, Tilman Markert, Markert, Internist, Kardiologe, Herzinfarkt, Rastatt, Baden-Baden" />
+        <meta name="description" content="Dies ist die Homepage der Kardiologiepraxis Gaggenau des niedergelassenen Kardiologen Dr.  med.  Tilman Markert" />
+        <meta name="Content-Language" content="de" />
+        <meta name="author" content="Leonhard Markert" />
+        <meta name="robots" content="INDEX, FOLLOW" />
+        <meta name="revisit-after" content="2 days" />
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+        <link rel="stylesheet" type="text/css"  media="all" href="{{ url_for('static', filename='css/all.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/slimbox.css') }}" media="screen" />
+    </head>
+    <body>
+        <nav>
+            {% import "_macros.html" as macros with context %}
+            {{ macros.render_main_menu() }}
+        </nav>
+        <div>
+            <a title="Zur Startseite" href="index.htm">
+                <img alt="Logo" id="logoright" src="{{ url_for('static', filename='images/logoklein.gif') }}">
+            </a>
+        </div>
+        <section>
+            <h1>
+                {% if page.heading %} {{ page.heading }}
+                {% else %} {{ page.title }} {% endif %}
+            </h1>
+
+            <article>{{ page.html|safe }}</article>
+
+        </section>
+        <aside>
+            <table><tbody>
+                <tr>
+                <td style="width:50%">
+                    <strong>Standort Gaggenau</strong><br>
+                    Hauptstraße 91, 76571 Gaggenau<br>
+                    Telefon: (07225) 3213<br>
+                    Telefax: (07225) 1335<br>
+                    Email: <a
+                      href="mailto:kardiopraxis-gaggenau@web.de">kardiopraxis-gaggenau@web.de</a><br>
+                    <a href="https://www.terminland.de/tilmanmarkert"
+                      target="_blank" class="extern">Termin
+                      buchen</a>
+                    </td><td style="width:50%">
+                    <strong>Öffnungszeiten</strong><br>
+                    Montag bis Freitag 8:00 bis 11:30 Uhr sowie nach
+                    Vereinbarung<br>
+                    Dienstag und Donnerstag 12:00 bis 15:00 Herzkatheter
+                    am Kreiskrankenhaus
+                    Rastatt
+                </td></tr>
+            </tbody></table>
+        </aside>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/mootools.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/slimbox.js') }}"></script>
+    </body>
+</html>
