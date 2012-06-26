@@ -5,7 +5,6 @@
         <title>{{ page.title }} - Kardiopraxis Gaggenau</title>
         <meta name="keywords" content="Kardiologiepraxis, Kardiopraxis, Praxis, Kardiologie, Gaggenau, Kardiopraxis-Gaggenau, Dr. Tilman Markert, Tilman Markert, Markert, Internist, Kardiologe, Herzinfarkt, Rastatt, Baden-Baden" />
         <meta name="description" content="Dies ist die Homepage der Kardiologiepraxis Gaggenau des niedergelassenen Kardiologen Dr.  med.  Tilman Markert" />
-        <meta name="Content-Language" content="de" />
         <meta name="author" content="Leonhard Markert" />
         <meta name="robots" content="INDEX, FOLLOW" />
         <meta name="revisit-after" content="2 days" />
@@ -26,12 +25,11 @@
             </a>
         </div>
         <section>
-            <h1>
-                {% if page.heading %}
+            <h1>{%- if page.heading %}
                     {{ page.heading|trim|replace('\n', '<br>')|safe }}
                 {% else %}
                     {{ page.title }}
-                {% endif %}
+                {%- endif %}
             </h1>
 
             <article>{{ page.html|safe }}</article>
