@@ -12,7 +12,9 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
 
         <link rel="stylesheet" type="text/css"  media="all" href="{{ url_for('static', filename='css/all.css') }}" />
+        {%- if 'slimbox' in js %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/slimbox.css') }}" media="screen" />
+        {%- endif %}
     </head>
     <body>
         <nav>
@@ -59,7 +61,8 @@
             </tbody></table>
         </aside>
 
-        <script type="text/javascript" src="{{ url_for('static', filename='js/mootools.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/slimbox.js') }}"></script>
+        {%- for j in js %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/{}.js'.format(j)) }}"></script>
+        {%- endfor %}
     </body>
 </html>

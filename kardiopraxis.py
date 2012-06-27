@@ -17,6 +17,7 @@ MENU = (
     ('Pflichtangaben', 'pflichtangaben'),
 )
 DEFAULT_TEMPLATE = 'layout.html'
+DEFAULT_JS = []
 MARKDOWN_EXTENSIONS = ['tables', 'extra']
 FLATPAGES_HTML_RENDERER = 'kardiopraxis.render_html'
 
@@ -31,8 +32,12 @@ pages = FlatPages(app)
 def page(path):
     '''Render Markdown-formatted page.'''
     page = pages.get_or_404(path)
-    template = page.meta.get('template', app.config['DEFAULT_TEMPLATE'])
-    return render_template(template, page=page)
+
+    meta_or_default = lambda x, y: page.meta.get(x, app.config[y])
+    template = meta_or_default('template', 'DEFAULT_TEMPLATE')
+    js = meta_or_default('js', 'DEFAULT_JS')
+
+    return render_template(template, page=page, js=js)
 
 # page rendering function
 def render_html(text):
