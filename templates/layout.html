@@ -1,3 +1,5 @@
+{% import "_macros.html" as macros with context %}
+
 <!doctype html>
 <html lang="de">
     <head>
@@ -10,15 +12,10 @@
         <meta name="revisit-after" content="2 days" />
 
         <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
-
-        <link rel="stylesheet" type="text/css"  media="all" href="{{ url_for('static', filename='css/all.css') }}" />
-        {%- if 'slimbox' in js %}
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/slimbox.css') }}" media="screen" />
-        {%- endif %}
+        {{ macros.css_imports() }}
     </head>
     <body>
         <nav>
-            {% import "_macros.html" as macros with context %}
             {{ macros.render_main_menu() }}
         </nav>
         <div>
@@ -33,9 +30,7 @@
                     {{ page.title }}
                 {%- endif %}
             </h1>
-
             <article>{{ page.html|safe }}</article>
-
         </section>
         <aside>
             <table><tbody>
@@ -60,9 +55,6 @@
                 </td></tr>
             </tbody></table>
         </aside>
-
-        {%- for j in js %}
-        <script type="text/javascript" src="{{ url_for('static', filename='js/{}.js'.format(j)) }}"></script>
-        {%- endfor %}
+        {{ macros.js_imports() }}
     </body>
 </html>
