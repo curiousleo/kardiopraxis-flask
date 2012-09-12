@@ -11,7 +11,7 @@ def init(venv=VENV, build=BUILD):
     local('{}/bin/pip install {}'.format(venv, PACKAGES))
 
 def build(venv=VENV, build=BUILD):
-    local('rm -rf {}'.format(build))
+    local('rm -rf {}/*'.format(build))
     local('{}/bin/python freeze.py'.format(venv))
 
 def serve(build=BUILD):
