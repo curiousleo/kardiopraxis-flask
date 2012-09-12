@@ -45,7 +45,7 @@
 
 {%- for j in js %}
     {% assets filters='rjsmin', output='{}/{}.js'.format(config['ASSET_DIR'], j), 'js/{}.js'.format(j) %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
 {%- endfor %}
 {%- endmacro %}
