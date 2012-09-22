@@ -9,6 +9,9 @@ body {
     width: 80%;
  /* margin: 0 auto; */
 }
+strong, h1 {
+  font-weight: bold;
+}
 nav {
     float: left;
     margin: 110px 0 0 50px;
@@ -130,6 +133,7 @@ td, th {
     vertical-align: top;
     text-align: left;
 }
+th { font-weight: bold; }
 
 #karte img {
     border:  none;
