@@ -32,7 +32,8 @@
 
 {%- macro css_imports() %}
 
-{% set css = ['all', 'slimbox'] if 'slimbox' in js else ['all'] %}
+{% set css = ['reset', 'all', 'slimbox'] if 'slimbox' in js
+        else ['reset', 'all'] %}
 {%- for c in css %}
     {% assets filters='yui_css', output='{}/{}.css'.format(config['ASSET_DIR'], c), 'css/{}.css'.format(c) %}
         <link rel="stylesheet" type="text/css"  media="all" href="{{ ASSET_URL }}" />
@@ -45,7 +46,7 @@
 
 {%- for j in js %}
     {% assets filters='rjsmin', output='{}/{}.js'.format(config['ASSET_DIR'], j), 'js/{}.js'.format(j) %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
 {%- endfor %}
 {%- endmacro %}
