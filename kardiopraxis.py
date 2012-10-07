@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import Flask, redirect, url_for, render_template, \
                   render_template_string
 
@@ -13,6 +15,7 @@ MENU = (
     ('Praxisteam', 'praxisteam'),
     ('Sprechstunden', 'sprechstunden'),
     ('Leistungen', 'leistungen'),
+    ('IGEL-Vorsorge', 'igel'),
     ('Anfahrt', 'anfahrt'),
     ('Kooperationen', 'kooperationen'),
     ('Pflichtangaben', 'pflichtangaben'),
