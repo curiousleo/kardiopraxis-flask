@@ -204,7 +204,7 @@ def smartypants(text):
         raise Exception, "The Python smartypants library isn't installed."
         return text
     else:
-        output = smartypants.smartyPants(text)
+        output = smartypants.smartypants(text)
         return output
 smartypants.is_safe = True
 

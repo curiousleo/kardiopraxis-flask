@@ -1,7 +1,7 @@
 from fabric.api import local
 
 PACKAGES = 'Flask Frozen-Flask Flask-FlatPages Flask-Assets markdown ' \
-           'smartypants'
+           'smartypants cssmin'
 VENV = 'venv'
 BUILD = 'build'
 
