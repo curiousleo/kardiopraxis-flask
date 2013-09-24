@@ -15,4 +15,4 @@ def build(venv=VENV, build=BUILD):
     local('{}/bin/python freeze.py'.format(venv))
 
 def serve(build=BUILD):
-    local('cd {} && python -m SimpleHTTPServer'.format(build))
+    local('cd {} && python -m http.server'.format(build))
