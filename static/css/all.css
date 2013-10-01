@@ -148,7 +148,10 @@ th { font-weight: bold; }
     display: block;
     text-align: center;
 }
-.helferin img { margin: 0 0 -4px 0; }
+.helferin img {
+    display: block;
+    margin: 0 auto -18px auto;
+}
 a.extern {
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAFlJREFUKM9j/M+AHzAxUKqABVNIB2rrFUYcJuyoxWICQteTaR6ZKOr/M/xn+M+g/R9CP67R/q/9X/v/42kwETQFMOn/DDCIRQGyNIYCTB4VA0oHR6Qw0j6yABwNTo4ODgGMAAAAAElFTkSuQmCC") no-repeat scroll right center transparent;
     padding-right: 15px;
